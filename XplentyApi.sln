@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XplentyApi", "XplentyApi\XplentyApi.csproj", "{C40A7022-3955-426C-B6CA-A4B6669C3FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XplentyApi.Test", "XplentyApi.Test\XplentyApi.Test.csproj", "{69649668-1441-459B-9E36-F85E95B7B86E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C40A7022-3955-426C-B6CA-A4B6669C3FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40A7022-3955-426C-B6CA-A4B6669C3FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40A7022-3955-426C-B6CA-A4B6669C3FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40A7022-3955-426C-B6CA-A4B6669C3FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69649668-1441-459B-9E36-F85E95B7B86E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69649668-1441-459B-9E36-F85E95B7B86E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69649668-1441-459B-9E36-F85E95B7B86E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69649668-1441-459B-9E36-F85E95B7B86E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
