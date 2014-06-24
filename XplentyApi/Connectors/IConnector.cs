@@ -4,9 +4,9 @@ namespace XplentyApi.Connectors
 {
     public interface IConnector
     {
-        string AccountName { get; }
+        string AccountName { get; set; }
 
-        string ApiKey { get; }
+        string ApiKey { get; set; }
 
         string Host { get; set; }
 
