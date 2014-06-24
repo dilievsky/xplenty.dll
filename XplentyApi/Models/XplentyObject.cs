@@ -1,6 +1,7 @@
+using System;
 using Newtonsoft.Json;
 
-namespace XplentyApi.Model
+namespace XplentyApi.Models
 {
     public class XplentyObject
     {
@@ -10,5 +11,10 @@ namespace XplentyApi.Model
         [JsonProperty(PropertyName = "owner_id")]
         public long OwnerId { get; set; }
 
+        [JsonProperty(PropertyName = "url")]
+        public string Url { get; set; }
+
+        [JsonProperty(PropertyName = "created_at")]
+        public DateTime? CreatedAt { get; set; }
     }
 }

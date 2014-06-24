@@ -14,6 +14,8 @@ namespace XplentyApi
     [DataContract]
     public enum ClusterStatus
     {
+        [EnumMember(Value = "idle")]
+        Idle,
         [EnumMember(Value = "pending")]
         Pending,
 		[EnumMember(Value = "error")]

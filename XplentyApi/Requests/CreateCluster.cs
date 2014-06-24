@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using XplentyApi.Model;
+using XplentyApi.Models;
 
-namespace XplentyApi.Request
+namespace XplentyApi.Requests
 {
     public class CreateCluster : XplentyRequest<Cluster>
     {

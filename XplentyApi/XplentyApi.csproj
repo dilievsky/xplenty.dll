@@ -31,7 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -45,21 +45,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
-    <Compile Include="Exception\XplentyApiException.cs" />
+    <Compile Include="Exceptions\XplentyApiException.cs" />
+    <Compile Include="Connectors\IConnector.cs" />
     <Compile Include="IXplentyApi.cs" />
-    <Compile Include="Request\StopJob.cs" />
-    <Compile Include="Request\JobInfo.cs" />
-    <Compile Include="Model\Cluster.cs" />
-    <Compile Include="Model\Job.cs" />
-    <Compile Include="Model\XplentyObject.cs" />
+    <Compile Include="Requests\ClusterInfo.cs" />
+    <Compile Include="Requests\TerminateCluster.cs" />
+    <Compile Include="Requests\StopJob.cs" />
+    <Compile Include="Requests\JobInfo.cs" />
+    <Compile Include="Models\Cluster.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\XplentyObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Request\RunJob.cs" />
-    <Compile Include="Request\CreateCluster.cs" />
-    <Compile Include="Request\IXplentyRequest.cs" />
-    <Compile Include="Request\XplentyRequest.cs" />
+    <Compile Include="Requests\RunJob.cs" />
+    <Compile Include="Requests\CreateCluster.cs" />
+    <Compile Include="Requests\IXplentyRequest.cs" />
+    <Compile Include="Requests\XplentyRequest.cs" />
     <Compile Include="Utils\BoolConverter.cs" />
-    <Compile Include="WebConnectivity.cs" />
+    <Compile Include="Connectors\RestConnector.cs" />
     <Compile Include="XplentyApi.cs" />
+    <Compile Include="Exceptions\XplentyUnAuthorizedException.cs" />
+    <Compile Include="Exceptions\XplentyBadRequestException.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

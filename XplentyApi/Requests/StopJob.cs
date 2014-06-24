@@ -1,6 +1,6 @@
-﻿using XplentyApi.Model;
+﻿using XplentyApi.Models;
 
-namespace XplentyApi.Request
+namespace XplentyApi.Requests
 {
     public class StopJob : XplentyRequest<Job>
     {

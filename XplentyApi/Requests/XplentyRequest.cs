@@ -1,8 +1,7 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using XplentyApi.Exceptions;
 
-namespace XplentyApi.Request
+namespace XplentyApi.Requests
 {
     public abstract class XplentyRequest<T> : IXplentyRequest<T>
     {
@@ -20,7 +19,7 @@ namespace XplentyApi.Request
             {
                 return JsonConvert.DeserializeObject<T>(data);
             }
-            catch (Exception e)
+            catch (System.Exception e)
             {
                 throw new XplentyApiException(string.Format("Failed Parsing response object type={0}",typeof(T).Name), e);
             }            

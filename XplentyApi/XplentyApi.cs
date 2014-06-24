@@ -1,26 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using XplentyApi.Model;
-using XplentyApi.Request;
+using XplentyApi.Connectors;
+using XplentyApi.Models;
+using XplentyApi.Requests;
 
 namespace XplentyApi
 {
-    public class XplentyApi : WebConnectivity, IXplentyApi
+    public class XplentyApi : IXplentyApi
     {
-        public XplentyApi(string accountName, string apiKey) : base(accountName, apiKey){}
+        private readonly IConnector connector;
         
-        public XplentyApi(string accountName, string apiKey, string host, string protocol) : base(accountName, apiKey, host, protocol){}
+        public string AccountName { get { return connector.AccountName; }}
+        public string ApiKey { get { return connector.ApiKey; } }
+        public string Host { get { return connector.Host; } }
+        public string Protocol { get { return connector.Protocol; } }
         
-        public IList<Cluster> ListClusters()
+        public XplentyApi(string accountName, string apiKey)
+        {   
+            connector = new RestConnector(accountName,apiKey);
+        }
+        
+        public XplentyApi(string accountName, string apiKey, string host, string protocol) : this(accountName, apiKey)
         {
-            throw new NotImplementedException();
+            connector.Host = host;
+            connector.Protocol = protocol;
         }
 
+        public XplentyApi(IConnector connector)
+        {
+            this.connector = connector;
+        }
+                
         public Cluster GetClusterInformation(long clusterId)
         {
             var request = new ClusterInfo(clusterId);
             
-            return SendRequest(request);
+            return connector.SendRequest(request);
         }
 
         public Cluster CreateCluster(int nodes, ClusterType type, string name, string description, bool terminateOnIdle, long timeToIdle)
@@ -37,31 +52,21 @@ namespace XplentyApi
 
             var request = new CreateCluster(cluster);
 
-            return SendRequest(request);
-        }
-
-        public Cluster UpdateCluster(long id, int nodes, string name, string description, bool terminateOnIdle, long timeToIdle)
-        {
-            throw new NotImplementedException();
+            return connector.SendRequest(request);
         }
 
         public Cluster TerminateCluster(long clusterId)
         {
             var request = new TerminateCluster(clusterId);
 
-            return SendRequest(request);
-        }
-
-        public IList<Job> ListJobs()
-        {
-            throw new NotImplementedException();
+            return connector.SendRequest(request);
         }
 
         public Job GetJobInformation(long jobId)
         {
             var request = new JobInfo(jobId);
 
-            return SendRequest(request);
+            return connector.SendRequest(request);
         }
 
         public Job RunJob(long clusterId, long packageId, IDictionary<string, string> variables)
@@ -75,32 +80,27 @@ namespace XplentyApi
 
             var request = new RunJob(job);
 
-            return SendRequest(request);
+            return connector.SendRequest(request);
         }
 
         public Job StopJob(long jobId)
         {
             var request = new StopJob(jobId);
 
-            return SendRequest(request);
+            return connector.SendRequest(request);
         }
 
-        public string GetAccountName()
+        public Cluster UpdateCluster(long id, int nodes, string name, string description, bool terminateOnIdle, long timeToIdle)
         {
-            return AccountName;
+            throw new NotImplementedException();
         }
 
-        public string GetApiKey()
+        public IList<Cluster> ListClusters()
         {
-            return ApiKey;
+            throw new NotImplementedException();
         }
 
-        public string GetHost()
-        {
-            return Host;
-        }
-
-        public Version GetVersion()
+        public IList<Job> ListJobs()
         {
             throw new NotImplementedException();
         }

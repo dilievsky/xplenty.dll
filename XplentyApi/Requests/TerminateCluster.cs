@@ -1,24 +1,24 @@
-﻿using XplentyApi.Model;
+﻿using XplentyApi.Models;
 
-namespace XplentyApi.Request
+namespace XplentyApi.Requests
 {
-    public class ClusterInfo : XplentyRequest<Cluster>
+    public class TerminateCluster : XplentyRequest<Cluster>
     {
         private readonly long clusterId;
 
-        public ClusterInfo(long clusterId)
+        public TerminateCluster(long clusterId)
         {
             this.clusterId = clusterId;
         }
 
         public override string HttpMethod
         {
-            get { return "GET"; }
+            get { return "DELETE"; }
         }
 
         public override string Name
         {
-            get { return "Get cluster information"; }
+            get { return "Terminate cluster"; }
         }
 
         public override string Endpoint
@@ -30,5 +30,6 @@ namespace XplentyApi.Request
         {
             get { return false; }
         }
+       
     }
 }
