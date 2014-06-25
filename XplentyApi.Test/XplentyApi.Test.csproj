@@ -53,6 +53,7 @@
     <Compile Include="ApiCallsTests.cs" />
     <Compile Include="JsonParsingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RealApiSanity.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XplentyApi\XplentyApi.csproj">

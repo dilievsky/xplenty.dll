@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Moq;
 using NUnit.Framework;
-using Newtonsoft.Json;
 using XplentyApi.Connectors;
 using XplentyApi.Models;
 using XplentyApi.Requests;
@@ -21,8 +21,8 @@ namespace XplentyApi.Test
         private static Mock<IConnector> CreateMockConnector(string accountName, string apiKey, string protocol="https", string host="david.api.com")
         {
             var mockConnector = new Mock<IConnector>();
-            mockConnector.Object.AccountName = "demoAccount";
-            mockConnector.Object.ApiKey = "zasdfds";
+            mockConnector.Object.AccountName = accountName;
+            mockConnector.Object.ApiKey = apiKey;
             mockConnector.Object.Protocol = protocol;
             mockConnector.Object.Host = host;
 
@@ -108,7 +108,13 @@ namespace XplentyApi.Test
         [Test]
         public void TestTerminateCluster()
         {
-            
+            var mockConnector = CreateMockConnector("demoAccount", "asdasd");
+            mockConnector.Setup(f => f.SendRequest(It.Is<XplentyRequest<Cluster>>(req => req.Name == "Terminate cluster"))).Returns(new Cluster());
+
+            xplentyApi = new XplentyApi(mockConnector.Object);
+
+            var cluster = xplentyApi.TerminateCluster(7);
+            Assert.IsNotNull(cluster);
         }
 
         [Test]
@@ -122,19 +128,38 @@ namespace XplentyApi.Test
         [Test]
         public void TestGetJobInformation()
         {
-            
+            var mockConnector = CreateMockConnector("demoAccount", "asdasd");
+            mockConnector.Setup(f => f.SendRequest(It.Is<XplentyRequest<Job>>(req => req.Name == "Get job info"))).Returns(new Job{Id = 7});
+
+            xplentyApi = new XplentyApi(mockConnector.Object);
+
+            var job = xplentyApi.GetJobInformation(7);
+            Assert.IsNotNull(job);
+            Assert.AreEqual(7,job.Id);
         }
 
         [Test]
         public void TestRunJob()
         {
-            
+            var mockConnector = CreateMockConnector("demoAccount", "asdasd");
+            mockConnector.Setup(f => f.SendRequest(It.Is<XplentyRequest<Job>>(req => req.Name == "Run Job"))).Returns(new Job { ClusterId = 6, PackageId = 234 });
+
+            xplentyApi = new XplentyApi(mockConnector.Object);
+
+            var job = xplentyApi.RunJob(6,234,new Dictionary<string, string>());
+            Assert.IsNotNull(job);
         }
 
         [Test]
         public void TestStopJob()
         {
-            
+            var mockConnector = CreateMockConnector("demoAccount", "asdasd");
+            mockConnector.Setup(f => f.SendRequest(It.Is<XplentyRequest<Job>>(req => req.Name == "Stop job"))).Returns(new Job());
+
+            xplentyApi = new XplentyApi(mockConnector.Object);
+
+            var job = xplentyApi.StopJob(7);
+            Assert.IsNotNull(job);
         }
 
     }
