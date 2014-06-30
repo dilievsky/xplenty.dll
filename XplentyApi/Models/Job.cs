@@ -21,7 +21,7 @@ namespace XplentyApi.Models
 		public int OutputsCount { get; set; }
 
 		[JsonProperty(PropertyName = "outputs")]
-		public IList<string> Outputs { get; set; }
+		public IList<IDictionary<string, string>> Outputs { get; set; }
 		
 		[JsonProperty(PropertyName = "started_at")]
 		public DateTime? StartedAt { get; set; }
